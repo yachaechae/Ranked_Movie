@@ -16,7 +16,22 @@ const searchOptions = {
 	  	accept: 'application/json',
 	  	Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZmMyZGZhZDQ3YThlZDRmMWUwYWQxYjc1MGVhMzBhMSIsInN1YiI6IjY1MzA5NGQ3YWVkZTU5MDE0YzM4MDBjZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F6qLqVKcX12Lxl8WUe5P3sDfhlIdJ44DaMgj0Dvuq1M'
 	}
-  };
+};
+
+const makeMovieCard = (movieId, postImg, movieTitle, voteAverage, overView) => {
+	const movieCard = document.createElement('div');
+
+	movieCard.className = 'movieCard';
+	movieCard.addEventListener('click', () => alert(`Movie id : ${movieId}`))
+	movieCard.innerHTML = `<div class="moviePoster">
+								<img src=${postImg} alt="">
+							</div>
+							<div class="movieTitle">${movieTitle}</div>
+							<div class="voteAverage">${voteAverage}</div>
+							<div class="overView">${overView}</div>`
+
+	return document.querySelector("#movieList").appendChild(movieCard)
+}
 
   //영화 리스트
 fetch(`${url}/popular`, options)
@@ -29,17 +44,8 @@ fetch(`${url}/popular`, options)
 			let voteAverage = res.vote_average;
 			let overView = res.overview;
 
-			const movieCard = document.createElement('div');
-			movieCard.className = 'movieCard';
-			movieCard.addEventListener('click', () => alert(`Movie id : ${res.id}`))
-			movieCard.innerHTML = `<div class="moviePoster">
-										<img src=${postImg} alt="">
-									</div>
-									<div class="movieTitle">${movieTitle}</div>
-									<div class="voteAverage">${voteAverage}</div>
-									<div class="overView">${overView}</div>`
+			makeMovieCard(res.id, postImg, movieTitle, voteAverage, overView);
 
-			return document.querySelector("#movieList").appendChild(movieCard);
 		})
 
   	})
@@ -65,9 +71,20 @@ const searchQuery = () => {
 
 const findMovie = (searchParams) => {
 	fetch(`${searchUrl}?query=${searchParams}&include_adult=false&language=en-US&page=1`, searchOptions)
-
 		.then(response => response.json())
-		.then(response => console.log(response))
-		.catch(err => console.error(err));
+		.then(response => {
+
+		response.results.map((res) => {
+			let postImg = `${imgUrl}/${res.poster_path}`
+			let movieTitle = res.title;
+			let voteAverage = res.vote_average;
+			let overView = res.overview;
+
+			makeMovieCard(res.id, postImg, movieTitle, voteAverage, overView);
+
+		})
+
+  	})
+  	.catch(err => console.error(err));
 
 }
