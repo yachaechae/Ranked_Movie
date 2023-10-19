@@ -65,11 +65,13 @@ header .searchBox .searchForm .searchInput input:valid ~ label {
     font-weight: bold;
   }
   
-  header .searchBox .searchForm .searchInput input:focus ~ span, 
-  header .searchBox .searchForm .searchInput input:valid ~ span {
+header .searchBox .searchForm .searchInput input:focus ~ span, 
+header .searchBox .searchForm .searchInput input:valid ~ span {
     width: 100%;
   }
+header .searchBox .searchForm .searchBtn{
 
+}
 
 .movieList{
     display: flex;
@@ -80,6 +82,7 @@ header .searchBox .searchForm .searchInput input:valid ~ label {
     max-width: 24%;
     width: 100%;
     margin: 0 1rem 1rem 0;
+    cursor: pointer;
 }
 .movieList .movieCard:nth-of-type(4n){
     margin: 0;
