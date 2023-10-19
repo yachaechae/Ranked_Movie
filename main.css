@@ -84,3 +84,17 @@ header .searchBox .searchForm .searchInput input:valid ~ label {
 .movieList .movieCard:nth-of-type(4n){
     margin: 0;
 }
+
+.movieList .movieCard .moviePoster > img{
+    width: 100%;
+}
+
+.movieList .movieCard .overView{
+    width: 100%;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

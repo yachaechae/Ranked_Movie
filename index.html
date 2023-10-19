@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranked Movie</title>
-    <link rel="stylesheet" href="./main.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png" alt="">
-        </div>
-        <div class="searchBox">
-            <div class="searchForm">
-                <div class="searchInput">
-                    <input id="search" type="text" required placeholder="Search">
-                    <label for="search">
-                        Search
-                    </label>
-                    <span></span>
-                </div>
-                <button class="searchBtn">검색</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ranked Movie</title>
+        <link rel="stylesheet" href="./main.css" />
+        <script type="text/javascript" src="popularMovie.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img
+                    src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png"
+                    alt=""
+                />
             </div>
-        </div>
-    </header>
-    <div class="container">
-        <div class="movieList">
-            <div class="movieCard">
-                <div class="moviePoster">
-                    영화 포스터
-                </div>
-                <div class="movieTitle">
-                    타이틀 
-                </div>
-                <div class="vote_average">
-                    평점
-                </div>
-                <div class="overview">
-                    줄거리
+            <div class="searchBox">
+                <div class="searchForm">
+                    <div class="searchInput">
+                        <input
+                            id="search"
+                            type="text"
+                            required
+                            placeholder="Search"
+                        />
+                        <label for="search"> Search </label>
+                        <span></span>
+                    </div>
+                    <button class="searchBtn">검색</button>
                 </div>
             </div>
+        </header>
+        <div class="container">
+            <div class="movieList">
+                <!-- JS를 통해 영화정보 추가 -->
+            </div>
         </div>
-    </div>
-    <footer>
-
-    </footer>
-</body>
+        <footer></footer>
+    </body>
 </html>
