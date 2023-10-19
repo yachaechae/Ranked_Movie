@@ -10,14 +10,6 @@ const options = {
   	}
 };
 
-const searchOptions = {
-	method: 'GET',
-	headers: {
-	  	accept: 'application/json',
-	  	Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZmMyZGZhZDQ3YThlZDRmMWUwYWQxYjc1MGVhMzBhMSIsInN1YiI6IjY1MzA5NGQ3YWVkZTU5MDE0YzM4MDBjZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F6qLqVKcX12Lxl8WUe5P3sDfhlIdJ44DaMgj0Dvuq1M'
-	}
-};
-
 const makeMovieCard = (movieId, postImg, movieTitle, voteAverage, overView) => {
 	const movieCard = document.createElement('div');
 
@@ -67,10 +59,8 @@ const searchQuery = () => {
 	findMovie(searchParams)
 }
 
-
-
 const findMovie = (searchParams) => {
-	fetch(`${searchUrl}?query=${searchParams}&include_adult=false&language=en-US&page=1`, searchOptions)
+	fetch(`${searchUrl}?query=${searchParams}&include_adult=false&language=en-US&page=1`, options)
 		.then(response => response.json())
 		.then(response => {
 
