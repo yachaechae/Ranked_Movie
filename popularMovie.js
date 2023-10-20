@@ -75,12 +75,12 @@ const scoreSearch = () => {
 	const inputScore = document.querySelector('#score').value
 	const scoreCheck = document.querySelector('#scoreCheck > option:checked').value
 	
-	const data = movieList;
+	const scoreFilter = movieList;
 	
 	clearCard()
 	closeModal()
 
-	const scoreFilter = data.filter((res,index, arr) => {
+	scoreFilter.filter((res) => {
 		let score =  res.vote_average
 
 		let movieId = res.id
