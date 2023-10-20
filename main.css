@@ -97,6 +97,7 @@ header .searchBox .searchForm .modal{
     overflow: auto; 
     background-color: rgba(0,0,0,0.4); 
     display: none;
+    z-index: 5;
 }
 
 header .searchBox .searchForm .modal .modalContent{
