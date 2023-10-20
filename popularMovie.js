@@ -10,6 +10,20 @@ const options = {
   	}
 };
 
+
+window.addEventListener('load', () => {
+	document.querySelector(`#search`).focus();
+})
+let movieList = [];
+
+const scoreModal = () => {
+	document.querySelector('#modal').style.display = 'block';
+}
+const closeModal = () => {
+	document.querySelector('#modal').style.display = 'none';
+	document.querySelector('#score').value = ``;
+}
+
 const makeMovieCard = (movieId, postImg, movieTitle, voteAverage, overView) => {
 	const movieCard = document.createElement('div');
 
@@ -19,19 +33,20 @@ const makeMovieCard = (movieId, postImg, movieTitle, voteAverage, overView) => {
 								<img src=${postImg} alt="">
 							</div>
 							<div class="movieTitle">${movieTitle}</div>
-							<div class="voteAverage">${voteAverage}</div>
+							<div class="voteAverage" >별점 : <span id="voteAverage">${voteAverage}</span></div>
 							<div class="overView">${overView}</div>`
 
 	return document.querySelector("#movieList").appendChild(movieCard)
 }
 
   //영화 리스트
-fetch(`${url}/popular`, options)
+fetch(`${url}/popular?language=ko-KR&page=1`, options)
 	.then(response => response.json())
 	.then(response => {
-
+		console.log(response.results)
+		movieList = response.results;
 		response.results.map((res) => {
-			let postImg = `${imgUrl}/${res.poster_path}`
+			let postImg = `${imgUrl}${res.poster_path}`
 			let movieTitle = res.title;
 			let voteAverage = res.vote_average;
 			let overView = res.overview;
@@ -39,28 +54,66 @@ fetch(`${url}/popular`, options)
 			makeMovieCard(res.id, postImg, movieTitle, voteAverage, overView);
 
 		})
-
   	})
   	.catch(err => console.error(err));
 
+// 영화 검색
+const enterKey = (event) => {
+	if (event.keyCode === 13) {
+		searchQuery()
+	}
+}
+
+const searchQuery = () => {
+	const searchParams = document.querySelector('#search').value;
+	searchParams ? clearCard() : alert("검색어를 입력해주세요")
+	
+	findMovie(searchParams)
+}
+
+const scoreSearch = () => {
+	const inputScore = document.querySelector('#score').value
+	const scoreCheck = document.querySelector('#scoreCheck > option:checked').value
+	
+	const data = movieList;
+	
+	clearCard()
+	closeModal()
+
+	const scoreFilter = data.filter((res,index, arr) => {
+		let score =  res.vote_average
+
+		let movieId = res.id
+		let postImg = `${imgUrl}/${res.poster_path}`
+		let movieTitle = res.title;
+		let overView = res.overview;
+
+		switch (scoreCheck) {
+			case "up": 
+			if (score >= inputScore) {
+				makeMovieCard(movieId,postImg,movieTitle,score,overView);
+			}
+			break;
+			case "down": 
+			if (score <= inputScore) {
+				makeMovieCard(movieId,postImg,movieTitle,score,overView);
+			}
+			break;
+		}
+	})
+
+}
+
 
 const clearCard = () => {
-	const cardList = document.querySelectorAll(`.movieCard`)
+	const cardList = document.querySelectorAll(`.movieCard `)
 	cardList.forEach(element => {
 		element.remove()
 	});
 }
 
-// 영화 검색
-const searchQuery = () => {
-	let searchParams = document.querySelector('#search').value;
-	clearCard()
-
-	findMovie(searchParams)
-}
-
 const findMovie = (searchParams) => {
-	fetch(`${searchUrl}?query=${searchParams}&include_adult=false&language=en-US&page=1`, options)
+	fetch(`${searchUrl}?query=${searchParams}&include_adult=false&language=ko-KR&page=1`, options)
 		.then(response => response.json())
 		.then(response => {
 
