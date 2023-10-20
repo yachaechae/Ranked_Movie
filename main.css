@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+*{font-family: 'Pretendard-Regular';}
 body{
     max-width: 1200px;
     margin: 0 auto;
@@ -70,7 +77,15 @@ header .searchBox .searchForm .searchInput input:valid ~ span {
     width: 100%;
   }
 header .searchBox .searchForm .searchBtn{
-
+    cursor: pointer;
+    border: 1px solid #2A2C32;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border-radius: 20px;
+}
+header .searchBox .searchForm .searchBtn:hover{
+    background-color: #2A2C32;
+    color: #fff;
 }
 
 header .searchBox .searchForm .modal{
@@ -86,7 +101,6 @@ header .searchBox .searchForm .modal{
 
 header .searchBox .searchForm .modal .modalContent{
     background: #fff;
-    width: 25vw;
     height: 25vh;    
     padding: 0 5%;
     border-radius: 25px;
@@ -104,8 +118,22 @@ header .searchBox .searchForm .modal .modalContent{
 header .searchBox .searchForm .modal .modalContent .modalHeader{
     text-align: right;
 }
-header .searchBox .searchForm .modal .modalContent .modalBody{
+header .searchBox .searchForm .modal .modalContent .modalBody,
+header .searchBox .searchForm .modal .modalContent .modalFooter{
     text-align: center;
+}
+
+header .searchBox .searchForm .modal .modalContent .modalBody .searchInput > input::placeholder{
+    color: #ccc;
+    font-size: 0.7rem;
+    text-indent: 20px;
+}
+header .searchBox .searchForm .modal .modalContent .modalBody .searchInput > input:focus::placeholder{
+    color: transparent;
+}
+header .searchBox .searchForm .modal .modalContent .modalBody #scoreCheck{
+    border-radius: 20px;
+    padding: 0.3rem;
 }
 
 .movieList{
@@ -127,6 +155,14 @@ header .searchBox .searchForm .modal .modalContent .modalBody{
     width: 100%;
 }
 
+.movieList .movieCard .movieTitle{
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.movieList .movieCard .voteAverage{
+    font-weight: 500;
+}
 .movieList .movieCard .overView{
     width: 100%;
     display: -webkit-box;
@@ -135,4 +171,6 @@ header .searchBox .searchForm .modal .modalContent .modalBody{
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
+    line-height: 1.7;
+    font-weight: 400;
 }

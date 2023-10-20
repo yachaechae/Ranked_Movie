@@ -33,7 +33,7 @@ const makeMovieCard = (movieId, postImg, movieTitle, voteAverage, overView) => {
 								<img src=${postImg} alt="">
 							</div>
 							<div class="movieTitle">${movieTitle}</div>
-							<div class="voteAverage" >별점 : <span id="voteAverage">${voteAverage}</span></div>
+							<div class="voteAverage" >🍅 : <span id="voteAverage">${voteAverage}</span></div>
 							<div class="overView">${overView}</div>`
 
 	return document.querySelector("#movieList").appendChild(movieCard)

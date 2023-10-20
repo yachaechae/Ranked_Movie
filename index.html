@@ -31,7 +31,7 @@
                     <button type="submit" class="searchBtn" 
                     onclick="searchQuery()">검색</button>
                     <button  class="searchBtn" 
-                    onclick="scoreModal()">별점 검색</button>
+                    onclick="scoreModal()">🍅 검색</button>
                     <div class="modal" id="modal">
                         <div class="modalContent">
                             <div class="modalHeader">
@@ -39,8 +39,8 @@
                             </div>
                             <div class="modalBody">
                                 <div class="searchInput">
-                                    <input type="text" id="score" required >
-                                    <label for="score">별점</label>
+                                    <input type="text" id="score" required placeholder="&nbsp;&nbsp;토마토점수를 입력해주세요!">
+                                    <label for="score">🍅</label>
                                     <span></span>
                                 </div>
                                 <select name="scoreCheck" id="scoreCheck">
@@ -48,8 +48,9 @@
                                     <option value="down">이하</option>
                                 </select>
                             </div>
-                            
-                            <button class="searchBtn" onclick="scoreSearch()">확인</button>
+                            <div class="modalFooter">
+                                <button class="searchBtn" onclick="scoreSearch()">확인</button>
+                            </div>
                         </div>
                     </div>
                 </div>
