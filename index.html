@@ -11,7 +11,7 @@
         <header>
             <div class="logo">
                 <img
-                    src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png"
+                    src="https://i.namu.wiki/i/ON_uzg01Ovt8bnDgwvXxvwWVt97x8kLh9WyaHFrKxzAXXtDkPE8wvYxIhDY44_1UmyEpbEqqSfeUJbKiwsRiULTAe2cDVfB1qG6kroFwAkrIEv5UFbmTbmPqR60FeJrZk07GZFiXFb8L9Q5BNfIutw.svg"
                     alt=""
                 />
             </div>
@@ -23,12 +23,35 @@
                             type="text"
                             required
                             placeholder="Search"
+                            onkeyup="enterKey(event)"
                         />
                         <label for="search"> Search </label>
                         <span></span>
                     </div>
                     <button type="submit" class="searchBtn" 
                     onclick="searchQuery()">검색</button>
+                    <button  class="searchBtn" 
+                    onclick="scoreModal()">별점 검색</button>
+                    <div class="modal" id="modal">
+                        <div class="modalContent">
+                            <div class="modalHeader">
+                                <span class="closeBtn" id="closeBtn" onclick="closeModal()">X</span>
+                            </div>
+                            <div class="modalBody">
+                                <div class="searchInput">
+                                    <input type="text" id="score" required >
+                                    <label for="score">별점</label>
+                                    <span></span>
+                                </div>
+                                <select name="scoreCheck" id="scoreCheck">
+                                    <option value="up">이상</option>
+                                    <option value="down">이하</option>
+                                </select>
+                            </div>
+                            
+                            <button class="searchBtn" onclick="scoreSearch()">확인</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
