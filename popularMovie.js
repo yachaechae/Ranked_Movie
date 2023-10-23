@@ -84,7 +84,7 @@ const scoreSearch = () => {
 		let score =  res.vote_average
 
 		let movieId = res.id
-		let postImg = `${imgUrl}/${res.poster_path}`
+		let postImg = `${imgUrl}${res.poster_path}`
 		let movieTitle = res.title;
 		let overView = res.overview;
 
@@ -118,7 +118,7 @@ const findMovie = (searchParams) => {
 		.then(response => {
 
 		response.results.map((res) => {
-			let postImg = `${imgUrl}/${res.poster_path}`
+			let postImg = `${imgUrl}${res.poster_path}`
 			let movieTitle = res.title;
 			let voteAverage = res.vote_average;
 			let overView = res.overview;
